@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./ButtonCounter.scss";
+import { CounterDiv } from "./CounterDiv";
+import { ColorOnCount } from "./ColorOnCount";
+import { getHSLFromCount } from "./utils";
+
+const KEY = "click-count";
 
 export default function ButtonCounter() {
-  const initCount = Number(window.localStorage.getItem("count"));
+  const initCount = Number(window.localStorage.getItem(KEY));
 
   const [count, setCount] = useState(initCount);
 
   useEffect(() => {
-    window.localStorage.setItem("count", count.toString());
+    window.localStorage.setItem(KEY, count.toString());
   }, [count]);
 
   function click() {
@@ -15,9 +20,12 @@ export default function ButtonCounter() {
   }
 
   return (
-    <div className="counter">
-      <div>Current count: {count}</div>
+    <CounterDiv>
+      <div>
+        Current count:{" "}
+        <ColorOnCount color={getHSLFromCount(count)}>{count}</ColorOnCount>
+      </div>
       <button onClick={click}>Click me!</button>
-    </div>
+    </CounterDiv>
   );
 }
