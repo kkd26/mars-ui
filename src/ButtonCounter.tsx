@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./ButtonCounter.scss";
 
 export default function ButtonCounter() {
-    
   const initCount = Number(window.localStorage.getItem("count"));
 
   const [count, setCount] = useState(initCount);
