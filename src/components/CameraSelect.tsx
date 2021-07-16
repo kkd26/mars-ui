@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "react-select/async";
 import API from "../Api";
+import "../styles/Select.scss"
 
 const CameraSelect = ({
   rover,
@@ -23,9 +24,7 @@ const CameraSelect = ({
     );
 
   return (
-    <Select
-      isMulti
-      cacheOptions
+    <Select className="cameraSelect select"
       defaultOptions
       loadOptions={cameraFetch}
       onChange={callOnChange}
