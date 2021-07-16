@@ -1,8 +1,10 @@
-.App {
-  background-color: black;
-  background-image: url("../photos/stars.png");
-  background-repeat: repeat-y;
-  background-size: contain;
-  height: 100%;
-  width: 100%;
+
+
+#title {
+  font-size: 3em;
+  text-transform: uppercase;
+  font-family: Nasa;
+  color: white;
+  padding: 40px 0;
+  text-align: center;
 }

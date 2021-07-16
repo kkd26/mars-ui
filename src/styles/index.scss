@@ -1,8 +1,11 @@
+@font-face {
+  font-family: Nasa;
+  src: url("./nasalization-rg.otf");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: Nasa;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -17,4 +20,20 @@ code {
 body {
   height: 100%;
   margin: auto;
+}
+
+#root {
+  background-color: black;
+  background-image: url("../photos/stars.png");
+  background-repeat: repeat-y;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+  padding: 0 5%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
