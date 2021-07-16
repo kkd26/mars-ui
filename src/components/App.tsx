@@ -13,7 +13,7 @@ const App = () => {
     setSelectedRover(rover.value);
   };
 
-  const [cameraPromise, setCameraPromise] = useState<string[]>([]);
+  const [cameraPromise, setCameraPromise] = useState<{name: string, full_name:string}[]>([]);
 
   useEffect(() => {
     if (selectedRover) {
@@ -23,7 +23,7 @@ const App = () => {
     }
   }, [selectedRover]);
 
-  const [selectedCamera, setSelectedCamera] = useState<
+  const [selectedCameraList, setSelectedCamera] = useState<
     { value: string; label: string }[]
   >([]);
 
@@ -33,20 +33,23 @@ const App = () => {
 
   useEffect(() => {
     getPhotos();
-  }, [selectedCamera]);
+  }, [selectedCameraList]);
 
   const [photos, setPhotos] = useState<PhotoI[]>([]);
+
+  useEffect(()=>{
+
+  }, [photos])
 
   const getPhotos = () => {
     console.log("fetch photos");
     setPhotos([]);
-    selectedCamera.forEach((camera) => {
-      API.getRoverPhotos(selectedRover, camera.value).then((newPhotos) => {
-        setPhotos([...photos, ...newPhotos]);
+    selectedCameraList.forEach((selectedCamera) => {
+      API.getRoverPhotos(selectedRover, selectedCamera.value).then((newPhotos) => {
+        setPhotos(photos => [...photos, ...newPhotos]);
       });
     });
   };
-
   return (
     <>
       <h1 id="title">Mars App</h1>
@@ -55,7 +58,7 @@ const App = () => {
         <CameraSelect
           callOnChange={handleCameraSelect}
           cameraPromise={cameraPromise}
-          selectedCamera={selectedCamera}
+          selectedCamera={selectedCameraList}
         />
       )}
       <Gallery photos={photos} />

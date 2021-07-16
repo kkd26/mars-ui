@@ -8,11 +8,11 @@ const CameraSelect = ({
   selectedCamera,
 }: {
   callOnChange?: any;
-  cameraPromise: string[];
+  cameraPromise: {name: string, full_name:string}[];
   selectedCamera: { value: string; label: string }[];
 }) => {
-  const cameraFetch = cameraPromise.map((camera) => {
-    return { value: camera, label: camera };
+  const cameraFetch = cameraPromise.map(({name, full_name}) => {
+    return { value: name, label: full_name };
   });
 
   return (
