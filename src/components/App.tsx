@@ -3,8 +3,8 @@ import API from "../Api";
 import "../styles/App.scss";
 import CameraSelect from "./CameraSelect";
 import Gallery from "./Gallery";
+import { PhotoI } from "./Photo";
 import RoverSelect from "./RoverSelect";
-import { PhotoProp } from "./Photo";
 
 const App = () => {
   const [selectedRover, setSelectedRover] = useState("");
@@ -35,7 +35,7 @@ const App = () => {
     getPhotos();
   }, [selectedCamera]);
 
-  const [photos, setPhotos] = useState<PhotoProp[]>([]);
+  const [photos, setPhotos] = useState<PhotoI[]>([]);
 
   const getPhotos = () => {
     console.log("fetch photos");
@@ -49,6 +49,7 @@ const App = () => {
 
   return (
     <>
+      <h1 id="title">Mars App</h1>
       <RoverSelect callOnChange={handleRoverSelect} />
       {selectedRover && (
         <CameraSelect

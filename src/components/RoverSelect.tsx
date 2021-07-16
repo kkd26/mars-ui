@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "react-select/async";
 import API from "../Api";
+import "../styles/Select.scss"
 
 const p = API.getRoverNamesList();
 
@@ -17,7 +18,7 @@ const RoverSelect = ({ callOnChange }: { callOnChange?: any }) => {
     );
 
   return (
-    <Select
+    <Select className="roverSelect select"
       cacheOptions
       defaultOptions
       loadOptions={roverNameFetch}

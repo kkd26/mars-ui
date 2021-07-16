@@ -1,5 +1,6 @@
 import React from "react";
 import Select from "react-select";
+import "../styles/Select.scss";
 
 const CameraSelect = ({
   callOnChange,
@@ -16,9 +17,10 @@ const CameraSelect = ({
 
   return (
     <Select
+      className="cameraSelect select"
       isMulti
-      cacheOptions
       defaultOptions
+      cacheOptions
       value={selectedCamera}
       options={cameraFetch}
       onChange={callOnChange}

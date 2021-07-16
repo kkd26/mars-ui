@@ -1,4 +1,5 @@
 import axios from "axios";
+import { PhotoI } from "./components/Photo";
 import getQueryParams from "./utils/queryParams";
 
 const API_URL = `http://localhost:8000`;
@@ -8,6 +9,7 @@ interface RoverI {
   max_sol: number;
   cameras: { name: string }[];
 }
+
 
 export default class API {
   static async getAllRoversData() {
@@ -32,7 +34,7 @@ export default class API {
     roverName: string,
     camera?: string,
     sol?: number
-  ) {
+  ): Promise<PhotoI[]> {
     return await axios
       .get(
         `${API_URL}/rovers/${roverName}/photos?${getQueryParams({
