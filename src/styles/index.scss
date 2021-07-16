@@ -26,9 +26,7 @@ body {
   background-color: black;
   background-image: url("../photos/stars.png");
   background-repeat: repeat-y;
-  background-size: contain;
-  height: 100%;
-  width: 100%;
+  background-size: cover;
   padding: 0 5%;
 }
 

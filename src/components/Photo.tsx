@@ -27,15 +27,16 @@ export interface PhotoI {
 
 
 const Photo = ({ img_src, earth_date, sol, id }: PhotoI) => {
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
 
-  const toggleOpen = () => setOpen(!isOpen);
+  const toggleOpen = () => setOpen(isOpen => !isOpen);
   
   return <>
-    <img className="photo" src={img_src} alt={"id-" + id} />
+    <img className="photo" src={img_src} alt={"id-" + id} onClick={() => setOpen(true)}/>
     {isOpen && (
           <Lightbox
             mainSrc={img_src}
+            imageTitle={`ID-${id}, Sol ${sol}, Earth date ${earth_date}`}
             onCloseRequest={toggleOpen}
           />)}
   </>;
